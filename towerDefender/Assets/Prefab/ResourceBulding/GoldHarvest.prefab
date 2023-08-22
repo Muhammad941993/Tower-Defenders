@@ -9,10 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7824551118791014146}
-  - component: {fileID: 3529147579549256580}
-  - component: {fileID: 9121793544626403501}
+  - component: {fileID: -4483874444598659632}
+  - component: {fileID: 2145522317834569964}
+  - component: {fileID: 3378454359069451154}
   m_Layer: 0
-  m_Name: StoneHarvest
+  m_Name: GoldHarvest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34,7 +35,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3529147579549256580
+--- !u!114 &-4483874444598659632
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -46,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1d85ef39ce0af047bf13f5eaa405770, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &9121793544626403501
+--- !u!114 &2145522317834569964
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -58,7 +59,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b073331b183f50448d5638851f8006a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BuildingTypeSO: {fileID: 11400000, guid: 20196db79fc6f244aa4b293b097c81e4, type: 2}
+  BuildingTypeSO: {fileID: 11400000, guid: f6ae69c6176119945ac6a620dec1afa1, type: 2}
+--- !u!61 &3378454359069451154
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1211387125503250344}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.09369397, y: 0.026769876}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 5.8453307, y: 4.6942296}
+  m_EdgeRadius: 0
 --- !u!1 &2882258360767326957
 GameObject:
   m_ObjectHideFlags: 0
@@ -70,7 +97,7 @@ GameObject:
   - component: {fileID: 1132658614050599312}
   - component: {fileID: 9175663760554292310}
   m_Layer: 0
-  m_Name: stoneHarvester
+  m_Name: goldHarvester
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -132,7 +159,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 2263e91ebcd2a254dab5f4caccb4a7af, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8ead931dd91bff8489e75de9c414f17f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

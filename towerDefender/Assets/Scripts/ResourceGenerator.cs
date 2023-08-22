@@ -6,12 +6,41 @@ public class ResourceGenerator : MonoBehaviour
 {
     private float timer;
     private float timerMax;
-    BuildingTypeSO BuildingTypeSO;
+    ResourceGeneratorData resourceGeneratorData;
     private void Awake()
     {
-        BuildingTypeSO = GetComponent<BuildingTypeHolder>().BuildingTypeSO;
+        resourceGeneratorData = GetComponent<BuildingTypeHolder>().BuildingTypeSO.ResourceGeneratorData;
 
-        timerMax = BuildingTypeSO.ResourceGeneratorData.TimerMax;
+        timerMax = resourceGeneratorData.TimerMax;
+    }
+    private void Start()
+    {
+        Collider2D[] collider2Ds = Physics2D.OverlapCircleAll(transform.position, 5);
+        int counter =0;
+        foreach (var item in collider2Ds)
+        {
+
+          ResourceNode rsourceNode =  item.GetComponent<ResourceNode>();
+            if(rsourceNode != null)
+            {
+                if(rsourceNode.resourceType == resourceGeneratorData.ResourceTypeSO)
+                {
+                    counter++;
+
+                }
+            }
+        }
+        counter = Mathf.Clamp(counter , 0, resourceGeneratorData.MaxResourceAmount);
+        if(counter == 0)
+        {
+            enabled = false;
+        }
+        else
+        {
+            timerMax = (resourceGeneratorData.TimerMax / 2) +
+                resourceGeneratorData.TimerMax * (1 - (float)(counter / resourceGeneratorData.MaxResourceAmount));
+        }
+
     }
     private void Update()
     {
@@ -19,8 +48,7 @@ public class ResourceGenerator : MonoBehaviour
         if(timer <= 0)
         {
             timer += timerMax;
-            ResourceManager.Instance.AddResource(BuildingTypeSO.ResourceGeneratorData.ResourceTypeSO, 1);
-           // print(BuildingTypeSO.name);
+            ResourceManager.Instance.AddResource(resourceGeneratorData.ResourceTypeSO, 1);
         }
     }
 }

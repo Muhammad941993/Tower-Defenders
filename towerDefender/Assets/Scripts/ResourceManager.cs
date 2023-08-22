@@ -20,7 +20,7 @@ public class ResourceManager : MonoBehaviour
         {
             ResourceTypeAmount[resource] = 0;
         }
-        DicTest();
+       // DicTest();
     }
 
     void DicTest()
@@ -36,7 +36,7 @@ public class ResourceManager : MonoBehaviour
     {
         ResourceTypeAmount[resourceType] += amount;
         OnResourceAmountChanged?.Invoke(this, EventArgs.Empty);
-        DicTest();
+      //  DicTest();
     }
     // Start is called before the first frame update
     void Start()
