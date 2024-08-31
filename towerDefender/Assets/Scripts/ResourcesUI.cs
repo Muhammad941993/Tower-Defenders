@@ -1,55 +1,60 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Resources;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
-using System;
 
 public class ResourcesUI : MonoBehaviour
 {
-    private ResourceTypeListSO resourceList;
-    Dictionary<ResourceTypeSO, Transform> ResourceTypeTransformDictionry;
+    Dictionary<ResourcesTypeSO, Transform> resourceTypeTransformDictionary = new();
+    ResourcesTypeListSO resourcesTypeListSO;
+    Transform resourcesTemp;
     private void Awake()
     {
-         resourceList = Resources.Load<ResourceTypeListSO>(typeof(ResourceTypeListSO).Name);
-        ResourceTypeTransformDictionry = new();
-        Transform trans = transform.Find("resourceTemplet");
-        trans.gameObject.SetActive(false);
-        int resourceCounter = 0;
-        foreach (var item in resourceList.List)
-        {
-           Transform go =  Instantiate(trans, transform);
-            go.gameObject.SetActive(true);
-            float offset = -160f;
-            go.GetComponent<RectTransform>().anchoredPosition = new Vector2(offset * resourceCounter,0);
-            go.Find("image").GetComponent<Image>().sprite = item.resourceSprite;
-         
-            ResourceTypeTransformDictionry[item] = go;
-            resourceCounter++;
-        }
+        resourcesTemp = transform.Find("resourceTemp");
+        resourcesTemp.gameObject.SetActive(false);
 
+        resourcesTypeListSO = Resources.Load<ResourcesTypeListSO>(typeof(ResourcesTypeListSO).Name);
+       
     }
-
     private void Start()
     {
-        UpdateResourcesUI();
-        ResourceManager.Instance.OnResourceAmountChanged += OnHAngeHappend;
-    }
+        ResourcesManager.Instance.OnResourcesAmountChanged += ResourcesManager_OnResourcesAmountChanged;
 
-    private void OnHAngeHappend(object sender, EventArgs e)
-    {
-        UpdateResourcesUI();
-    }
-
-    void UpdateResourcesUI()
-    {
-        foreach (var item in resourceList.List)
+        float offsetAmount = -100;
+        int resourceCounter = 0;
+        foreach (var resource in resourcesTypeListSO.List)
         {
-            Transform go = ResourceTypeTransformDictionry[item];
-            int amount = ResourceManager.Instance.GetResourceAmount(item);
-            go.Find("text").GetComponent<TextMeshProUGUI>().SetText(amount.ToString());
-        }
-       
+            var resourceTemp = Instantiate(resourcesTemp, transform);
+            resourceTypeTransformDictionary[resource] = resourceTemp;
 
+            resourceTemp.gameObject.SetActive(true);
+
+            resourceTemp.GetComponent<RectTransform>().anchoredPosition =
+                new Vector2(offsetAmount * resourceCounter, -35);
+            resourceCounter++;
+
+            resourceTemp.Find("image").GetComponent<Image>().sprite = resource.Image;
+            resourceTemp.Find("text").GetComponent<TextMeshProUGUI>().text =
+                ResourcesManager.Instance.GetResourceAmount(resource).ToString();
+
+        }
+    }
+
+    private void ResourcesManager_OnResourcesAmountChanged(object sender, System.EventArgs e)
+    {
+        UpdateResource();
+    }
+
+    public void UpdateResource()
+    {
+        foreach (var resource in resourcesTypeListSO.List)
+        {
+
+            resourceTypeTransformDictionary[resource].Find("text").GetComponent<TextMeshProUGUI>().text =
+                ResourcesManager.Instance.GetResourceAmount(resource).ToString();
+
+        }
     }
 }
