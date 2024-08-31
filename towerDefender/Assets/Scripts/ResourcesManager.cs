@@ -30,7 +30,7 @@ public class ResourcesManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.O))
         {
             AddResources(resourcesTypeListSO.List[0], 10);
-            PrintResources();
+           
         }
     }
     public void PrintResources()
