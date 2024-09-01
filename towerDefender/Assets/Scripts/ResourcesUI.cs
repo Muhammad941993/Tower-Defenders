@@ -32,7 +32,7 @@ public class ResourcesUI : MonoBehaviour
             resourceTemp.gameObject.SetActive(true);
 
             resourceTemp.GetComponent<RectTransform>().anchoredPosition =
-                new Vector2(offsetAmount * resourceCounter, -35);
+                new Vector2(offsetAmount * resourceCounter, 0);
             resourceCounter++;
 
             resourceTemp.Find("image").GetComponent<Image>().sprite = resource.Image;

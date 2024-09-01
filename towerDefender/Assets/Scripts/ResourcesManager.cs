@@ -44,7 +44,6 @@ public class ResourcesManager : MonoBehaviour
     {
         resourceTypeAmount[resourceType] += amount;
         OnResourcesAmountChanged?.Invoke(this,EventArgs.Empty);
-        PrintResources();
     }
 
     public int GetResourceAmount(ResourcesTypeSO resourceType) => resourceTypeAmount[resourceType];
