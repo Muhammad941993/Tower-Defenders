@@ -19,27 +19,7 @@ public class ResourcesManager : MonoBehaviour
             resourceTypeAmount[item] = 0;
         }
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            AddResources(resourcesTypeListSO.List[0], 10);
-           
-        }
-    }
-    public void PrintResources()
-    {
-        foreach (var item in resourceTypeAmount)
-        {
-            print(item.Key + "::" + item.Value);
-        }
-    }
+    
     public void AddResources(ResourcesTypeSO resourceType, int amount)
     {
         resourceTypeAmount[resourceType] += amount;

@@ -12,9 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10f11fdb885484646b292419efd3600b, type: 3}
   m_Name: BuildingTypeGold
   m_EditorClassIdentifier: 
-  StringName: Gold Harvester
-  Prefab: {fileID: 6438534739698597818, guid: d60cee9842af9af4ab65208525a7f152, type: 3}
-  Sprite: {fileID: 21300000, guid: 8ead931dd91bff8489e75de9c414f17f, type: 3}
+  stringName: gold
+  prefab: {fileID: 6438534739698597818, guid: d60cee9842af9af4ab65208525a7f152, type: 3}
+  sprite: {fileID: 21300000, guid: 8ead931dd91bff8489e75de9c414f17f, type: 3}
+  minConstructionRadius: 7
   resourceGeneratorData:
     timerMax: 2
+    resourceDetectionRadius: 1
+    maxResourceAmount: 1
     ResourceTypeSO: {fileID: 11400000, guid: bab5ce67d67013447be62d385cf01d14, type: 2}

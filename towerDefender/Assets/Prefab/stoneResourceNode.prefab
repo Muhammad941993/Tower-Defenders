@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6438534739296800133
+--- !u!1 &16720492660061158
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,37 +8,38 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6438534739296800130}
-  - component: {fileID: 6438534739296800131}
+  - component: {fileID: 245490102893293092}
+  - component: {fileID: 8146385771595361462}
+  - component: {fileID: 7289383950056140699}
   m_Layer: 0
-  m_Name: Square
+  m_Name: Stone_rock_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6438534739296800130
+--- !u!4 &245490102893293092
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6438534739296800133}
+  m_GameObject: {fileID: 16720492660061158}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6438534739698597819}
+  m_Father: {fileID: 8897081272672290153}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &6438534739296800131
+--- !u!212 &8146385771595361462
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6438534739296800133}
+  m_GameObject: {fileID: 16720492660061158}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -73,18 +74,32 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 8ead931dd91bff8489e75de9c414f17f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b52b48347554dfc41a6ef07c684a601d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2.96, y: 2.4}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &6438534739698597818
+--- !u!114 &7289383950056140699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 16720492660061158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cadcc51cf32fda42bc3b8d977f9cc3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RunOnce: 1
+  positionOffsetY: 0
+--- !u!1 &6244349804875415658
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -92,65 +107,39 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6438534739698597819}
-  - component: {fileID: 3919751823041270415}
-  - component: {fileID: -2537475343749061804}
-  - component: {fileID: 5417842423325162438}
+  - component: {fileID: 8897081272672290153}
+  - component: {fileID: 5678157283174016532}
+  - component: {fileID: 4568247540208641191}
   m_Layer: 0
-  m_Name: GoldHarvester
+  m_Name: stoneResourceNode
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6438534739698597819
+--- !u!4 &8897081272672290153
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6438534739698597818}
+  m_GameObject: {fileID: 6244349804875415658}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6438534739296800130}
+  - {fileID: 245490102893293092}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3919751823041270415
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6438534739698597818}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fba26a943d74d524d8fc07457f4464cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &-2537475343749061804
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6438534739698597818}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b026cbbb9d2adf344a2371b4b2f2ef5a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BuildingTypeSO: {fileID: 11400000, guid: ac72067492f6d404fa6a82d8fcabca05, type: 2}
---- !u!61 &5417842423325162438
+--- !u!61 &5678157283174016532
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6438534739698597818}
+  m_GameObject: {fileID: 6244349804875415658}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -176,7 +165,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.07241058, y: -0.09051305}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -187,5 +176,18 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 5.809867, y: 4.669957}
+  m_Size: {x: 3.0999022, y: 1.1810261}
   m_EdgeRadius: 0
+--- !u!114 &4568247540208641191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6244349804875415658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64dea1b408aa8f841b8b7779386b24fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ResourcesType: {fileID: 11400000, guid: fa2139c7f43e6554e8c7b0c3d256607d, type: 2}

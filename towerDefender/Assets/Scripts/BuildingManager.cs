@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -7,28 +8,27 @@ public class BuildingManager : MonoBehaviour
 
     private BuildingTypeSO activeBuldingType;
     private BuildingTypeListSO buildingTypeListSO;
-    private Camera mainCamera;
+    public event EventHandler<OnActiveBuildingTypeChangedEventArgs> OnActiveBuildingTypeChanged;
+
+    public class OnActiveBuildingTypeChangedEventArgs : EventArgs
+    {
+        public BuildingTypeSO activeBuldingType;
+    }
     private void Awake()
     {
         Instance = this;
         buildingTypeListSO = Resources.Load<BuildingTypeListSO>(typeof(BuildingTypeListSO).Name);
 
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-        mainCamera = Camera.main;
-
-    }
-
+   
     // Update is called once per frame
     void Update()
     {
         if (Input.GetMouseButtonDown(0) && !EventSystem.current.currentSelectedGameObject)
         {
-            if(activeBuldingType != null)
+            if(activeBuldingType != null && CanSpawnBuilding(activeBuldingType, UtilsClass.GetMouseWorledPosition()))
             {
-                Instantiate(activeBuldingType.Prefab, GetMouseWorledPosition(), Quaternion.identity);
+                Instantiate(activeBuldingType.prefab,UtilsClass.GetMouseWorledPosition(), Quaternion.identity);
             }
         }
     }
@@ -37,11 +37,42 @@ public class BuildingManager : MonoBehaviour
     public void SetActiveBuildingType(BuildingTypeSO buildingType)
     {
         activeBuldingType = buildingType;
+        OnActiveBuildingTypeChanged?.Invoke(this,
+            new OnActiveBuildingTypeChangedEventArgs { activeBuldingType = activeBuldingType 
+            });
     }
-    Vector3 GetMouseWorledPosition()
+    
+    bool CanSpawnBuilding(BuildingTypeSO buildingType , Vector3 position)
     {
-        Vector3 WorlesPosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
-        WorlesPosition.z = 0;
-        return WorlesPosition;
+        var prefabCollider = buildingType.prefab.GetComponent<BoxCollider2D>();
+        var colliders2d = Physics2D.OverlapBoxAll(position, prefabCollider.size,0);
+
+        bool isAreaClear = colliders2d.Length == 0;
+        if (!isAreaClear) return false;
+
+        colliders2d = Physics2D.OverlapCircleAll(position, buildingType.minConstructionRadius);
+        foreach (var collider in colliders2d)
+        {
+            var building = collider.GetComponent<BuildingTypeHolder>();
+            if (building != null)
+            {
+                if(building.BuildingTypeSO == buildingType)
+                {
+                    return false;
+                }
+            }
+        }
+        float maxConstructionRadius = 30;
+        colliders2d = Physics2D.OverlapCircleAll(position, maxConstructionRadius);
+        foreach (var collider in colliders2d)
+        {
+            var building = collider.GetComponent<BuildingTypeHolder>();
+            if (building != null)
+            {
+               return true;
+            }
+        }
+
+        return false;
     }
 }

@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 10f11fdb885484646b292419efd3600b, type: 3}
-  m_Name: BuildingTypeStone
+  m_Name: HQ
   m_EditorClassIdentifier: 
-  stringName: stone
-  prefab: {fileID: 6438534739698597818, guid: 304e80fc2f01d4d4da7650e01c08a4fe, type: 3}
-  sprite: {fileID: 21300000, guid: 2263e91ebcd2a254dab5f4caccb4a7af, type: 3}
+  stringName: HQ
+  prefab: {fileID: 6438534739698597818, guid: 3738b25d418a1964da7f9696a01ee962, type: 3}
+  sprite: {fileID: 21300000, guid: 7030b8e3eb49e8440ae8eb3ec8b45d05, type: 3}
   minConstructionRadius: 7
   resourceGeneratorData:
-    timerMax: 1
-    resourceDetectionRadius: 3
-    maxResourceAmount: 3
-    ResourceTypeSO: {fileID: 11400000, guid: fa2139c7f43e6554e8c7b0c3d256607d, type: 2}
+    timerMax: 0.5
+    resourceDetectionRadius: 5
+    maxResourceAmount: 5
+    ResourceTypeSO: {fileID: 11400000, guid: be86957942ea15c4296050649c525de5, type: 2}

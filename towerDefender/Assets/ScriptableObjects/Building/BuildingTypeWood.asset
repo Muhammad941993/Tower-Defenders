@@ -12,9 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10f11fdb885484646b292419efd3600b, type: 3}
   m_Name: BuildingTypeWood
   m_EditorClassIdentifier: 
-  StringName: Wood Harvester
-  Prefab: {fileID: 6438534739698597818, guid: 483370de0f3fe274db9e76101dea6da5, type: 3}
-  Sprite: {fileID: 21300000, guid: 6a842b2a4e5a7d4409bb0aa09da51dc1, type: 3}
+  stringName: wood
+  prefab: {fileID: 6438534739698597818, guid: 483370de0f3fe274db9e76101dea6da5, type: 3}
+  sprite: {fileID: 21300000, guid: 6a842b2a4e5a7d4409bb0aa09da51dc1, type: 3}
+  minConstructionRadius: 7
   resourceGeneratorData:
     timerMax: 0.5
+    resourceDetectionRadius: 5
+    maxResourceAmount: 5
     ResourceTypeSO: {fileID: 11400000, guid: be86957942ea15c4296050649c525de5, type: 2}
