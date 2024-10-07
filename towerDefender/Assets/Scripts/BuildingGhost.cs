@@ -2,11 +2,12 @@ using UnityEngine;
 
 public class BuildingGhost : MonoBehaviour
 {
+    ResourceNerbyOverlay resourceNerby;
     SpriteRenderer spriteRender;
     private void Awake()
     {
         spriteRender = transform.Find("sprite").GetComponent<SpriteRenderer>();
-
+        resourceNerby = transform.Find("ResourceNerbyOverlay").GetComponent<ResourceNerbyOverlay>();
     }
     void Start()
     {
@@ -19,10 +20,12 @@ public class BuildingGhost : MonoBehaviour
         if(eventArgs.activeBuldingType != null)
         {
             Show(eventArgs.activeBuldingType.sprite);
+            resourceNerby.Show(eventArgs.activeBuldingType.resourceGeneratorData);
         }
         else
         {
             Hide();
+            resourceNerby.Hide();
         }
     }
 

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,7 @@ public class ResourcesGenerator : MonoBehaviour
     float timer;
     float timerMax;
 
+   
     private void Awake()
     {
         resourceGeneratorData = GetComponent<BuildingTypeHolder>().BuildingTypeSO.resourceGeneratorData;
@@ -16,7 +18,24 @@ public class ResourcesGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       var collider2dArray = Physics2D.OverlapCircleAll(transform.position, resourceGeneratorData.resourceDetectionRadius);
+        int nearResource = GetNearbyResourceAmount(resourceGeneratorData,transform.position);
+
+        if (nearResource <= 0)
+        {
+            this.enabled = false;
+        }
+        else
+        {
+            timerMax = resourceGeneratorData.timerMax / 2 +
+                resourceGeneratorData.timerMax *
+                (1 - nearResource / resourceGeneratorData.maxResourceAmount);
+        }
+    }
+
+    public static int GetNearbyResourceAmount(ResourcesGeneratorData resourceGeneratorData , Vector3 position)
+    {
+        var collider2dArray =
+            Physics2D.OverlapCircleAll(position, resourceGeneratorData.resourceDetectionRadius);
 
         int nearResource = 0;
         foreach (var collider in collider2dArray)
@@ -24,24 +43,15 @@ public class ResourcesGenerator : MonoBehaviour
             var node = collider.GetComponent<ResourceNode>();
             if (node != null)
             {
-                if(node.ResourcesType == resourceGeneratorData.ResourceTypeSO)
+                if (node.ResourcesType == resourceGeneratorData.ResourceTypeSO)
                 {
                     nearResource++;
 
                 }
             }
         }
-        nearResource = Mathf.Clamp(nearResource,0, resourceGeneratorData.maxResourceAmount);
-        if(nearResource <= 0)
-        {
-            this.enabled = false;
-        }
-        else
-        {
-            timerMax = resourceGeneratorData.timerMax / 2 +
-                resourceGeneratorData.timerMax * 
-                (1- nearResource / resourceGeneratorData.maxResourceAmount);
-        }
+        nearResource = Mathf.Clamp(nearResource, 0, resourceGeneratorData.maxResourceAmount);
+        return nearResource;
     }
 
     // Update is called once per frame
@@ -53,5 +63,19 @@ public class ResourcesGenerator : MonoBehaviour
             timer = timerMax;
             ResourcesManager.Instance.AddResources(resourceGeneratorData.ResourceTypeSO,1);
         }
+    }
+    public ResourcesGeneratorData GetResourcesGeneratorData()
+    {
+        return resourceGeneratorData;
+    }
+
+    public float GetAmountGeneratedPerSecond()
+    {
+       return 1 / timerMax;
+    }
+
+    public float GetTimeNormalized()
+    {
+       return timer / timerMax;
     }
 }
