@@ -27,4 +27,26 @@ public class ResourcesManager : MonoBehaviour
     }
 
     public int GetResourceAmount(ResourcesTypeSO resourceType) => resourceTypeAmount[resourceType];
+
+    public bool CanAfford(ResourceAmount[] resourceAmounts)
+    {
+        foreach (var resourceAmount in resourceAmounts)
+        {
+            if(GetResourceAmount(resourceAmount.resourcesTypeSO) < resourceAmount.amount)
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public void SpendResources(ResourceAmount[] resourceAmounts)
+    {
+        foreach (var resourceAmount in resourceAmounts)
+        {
+            resourceTypeAmount[resourceAmount.resourcesTypeSO] -= resourceAmount.amount; 
+        }
+    }
+
+
 }

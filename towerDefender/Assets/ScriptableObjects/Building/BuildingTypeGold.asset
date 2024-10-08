@@ -21,3 +21,8 @@ MonoBehaviour:
     resourceDetectionRadius: 5
     maxResourceAmount: 1
     ResourceTypeSO: {fileID: 11400000, guid: bab5ce67d67013447be62d385cf01d14, type: 2}
+  constructionCostArray:
+  - resourcesTypeSO: {fileID: 11400000, guid: be86957942ea15c4296050649c525de5, type: 2}
+    amount: 20
+  - resourcesTypeSO: {fileID: 11400000, guid: fa2139c7f43e6554e8c7b0c3d256607d, type: 2}
+    amount: 20

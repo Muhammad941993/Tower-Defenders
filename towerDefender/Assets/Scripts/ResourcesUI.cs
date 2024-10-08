@@ -1,6 +1,4 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Resources;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,7 +14,7 @@ public class ResourcesUI : MonoBehaviour
         resourcesTemp.gameObject.SetActive(false);
 
         resourcesTypeListSO = Resources.Load<ResourcesTypeListSO>(typeof(ResourcesTypeListSO).Name);
-       
+
     }
     private void Start()
     {
@@ -51,10 +49,8 @@ public class ResourcesUI : MonoBehaviour
     {
         foreach (var resource in resourcesTypeListSO.List)
         {
-
             resourceTypeTransformDictionary[resource].Find("text").GetComponent<TextMeshProUGUI>().text =
                 ResourcesManager.Instance.GetResourceAmount(resource).ToString();
-
         }
     }
 }
