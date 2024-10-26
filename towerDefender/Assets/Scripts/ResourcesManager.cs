@@ -7,7 +7,7 @@ public class ResourcesManager : MonoBehaviour
     public static ResourcesManager Instance { get; private set; }
 
     public event EventHandler OnResourcesAmountChanged;
-    ResourcesTypeListSO resourcesTypeListSO;
+    private ResourcesTypeListSO resourcesTypeListSO;
     Dictionary<ResourcesTypeSO, int> resourceTypeAmount = new();
     private void Awake()
     {
@@ -20,6 +20,7 @@ public class ResourcesManager : MonoBehaviour
         }
     }
     
+    // ReSharper disable Unity.PerformanceAnalysis
     public void AddResources(ResourcesTypeSO resourceType, int amount)
     {
         resourceTypeAmount[resourceType] += amount;

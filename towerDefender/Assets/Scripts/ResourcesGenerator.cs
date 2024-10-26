@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ResourcesGenerator : MonoBehaviour
@@ -9,7 +6,7 @@ public class ResourcesGenerator : MonoBehaviour
     float timer;
     float timerMax;
 
-   
+
     private void Awake()
     {
         resourceGeneratorData = GetComponent<BuildingTypeHolder>().BuildingTypeSO.resourceGeneratorData;
@@ -18,7 +15,7 @@ public class ResourcesGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        int nearResource = GetNearbyResourceAmount(resourceGeneratorData,transform.position);
+        int nearResource = GetNearbyResourceAmount(resourceGeneratorData, transform.position);
 
         if (nearResource <= 0)
         {
@@ -32,7 +29,7 @@ public class ResourcesGenerator : MonoBehaviour
         }
     }
 
-    public static int GetNearbyResourceAmount(ResourcesGeneratorData resourceGeneratorData , Vector3 position)
+    public static int GetNearbyResourceAmount(ResourcesGeneratorData resourceGeneratorData, Vector3 position)
     {
         var collider2dArray =
             Physics2D.OverlapCircleAll(position, resourceGeneratorData.resourceDetectionRadius);
@@ -58,10 +55,10 @@ public class ResourcesGenerator : MonoBehaviour
     void Update()
     {
         timer -= Time.deltaTime;
-        if(timer < 0)
+        if (timer < 0)
         {
             timer = timerMax;
-            ResourcesManager.Instance.AddResources(resourceGeneratorData.ResourceTypeSO,1);
+            ResourcesManager.Instance.AddResources(resourceGeneratorData.ResourceTypeSO, 1);
         }
     }
     public ResourcesGeneratorData GetResourcesGeneratorData()
@@ -71,11 +68,11 @@ public class ResourcesGenerator : MonoBehaviour
 
     public float GetAmountGeneratedPerSecond()
     {
-       return 1 / timerMax;
+        return 1 / timerMax;
     }
 
     public float GetTimeNormalized()
     {
-       return timer / timerMax;
+        return timer / timerMax;
     }
 }

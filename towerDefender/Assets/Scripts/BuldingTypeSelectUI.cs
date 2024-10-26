@@ -27,8 +27,19 @@ public class BuldingTypeSelectUI : MonoBehaviour
         arrowButton.Find("image").GetComponent<RectTransform>().sizeDelta = new Vector2 (40,40);
         arrowButton.Find("selected").gameObject.SetActive(true);
         arrowButton.gameObject.SetActive(true);
+
         arrowButton.GetComponent<Button>().onClick.AddListener(() =>
         { BuildingManager.Instance.SetActiveBuildingType(null); });
+        
+        MouseEnterExitEvents mouseEnterExit = arrowButton.GetComponent<MouseEnterExitEvents>();
+        mouseEnterExit.OnMouseEnter +=
+            (object sender, System.EventArgs e) => 
+            { ToolTipeUI.Instance.Show("Arrow"); };
+        mouseEnterExit.OnMouseExit +=
+            (object sender, System.EventArgs e) => 
+            { ToolTipeUI.Instance.Hide(); };
+
+
         index++;
 
 
@@ -36,18 +47,27 @@ public class BuldingTypeSelectUI : MonoBehaviour
         {
             if (ignoreBuildingTypeList.Contains(buildingType)) continue;
 
-            var button = Instantiate(buttonTemplete, transform);
+            Transform button = Instantiate(buttonTemplete, transform);
             button.GetComponent<RectTransform>().anchoredPosition = new Vector2(offsetAmount * index, 0);
             button.Find("image").GetComponent<Image>().sprite = buildingType.sprite;
             button.gameObject.SetActive(true);
             buttonBuildingTransformDictionary[buildingType] = button;
+
             button.GetComponent<Button>().onClick.AddListener(() => 
             { BuildingManager.Instance.SetActiveBuildingType(buildingType);  });
-            
+            mouseEnterExit = button.GetComponent<MouseEnterExitEvents>();
+            mouseEnterExit.OnMouseEnter +=
+                (object sender, System.EventArgs e) =>
+                { ToolTipeUI.Instance.Show(buildingType.GetConstructionCost()); };
+            mouseEnterExit.OnMouseExit +=
+                (object sender, System.EventArgs e) => { ToolTipeUI.Instance.Hide(); };
+
             index++;
         }
 
     }
+
+
     private void Start()
     {
         BuildingManager.Instance.OnActiveBuildingTypeChanged += BuildingManager_OnActiveBuildingTypeChanged;
@@ -78,4 +98,6 @@ public class BuldingTypeSelectUI : MonoBehaviour
         }
         
     }
+    
+   
 }
