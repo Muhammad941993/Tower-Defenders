@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [CreateAssetMenu(fileName ="BuildingType" ,menuName = "ScriptableObject/BuildingType")]
 public class BuildingTypeSO : ScriptableObject
@@ -12,6 +13,7 @@ public class BuildingTypeSO : ScriptableObject
     public float minConstructionRadius;
     public ResourcesGeneratorData resourceGeneratorData;
     public ResourceAmount[] constructionCostArray;
+    public int healthAmountMax;
 
     public string GetConstructionCost()
     {

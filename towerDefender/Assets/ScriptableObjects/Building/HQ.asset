@@ -21,3 +21,5 @@ MonoBehaviour:
     resourceDetectionRadius: 5
     maxResourceAmount: 5
     ResourceTypeSO: {fileID: 11400000, guid: be86957942ea15c4296050649c525de5, type: 2}
+  constructionCostArray: []
+  healthAmountMax: 150
