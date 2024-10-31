@@ -1,11 +1,13 @@
 using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Serialization;
 
 public class BuildingManager : MonoBehaviour
 {
     public static BuildingManager Instance {  get; private set; }
 
+    [SerializeField] Building hqBuilding;
     private BuildingTypeSO activeBuldingType;
     private BuildingTypeListSO buildingTypeListSO;
     public event EventHandler<OnActiveBuildingTypeChangedEventArgs> OnActiveBuildingTypeChanged;
@@ -46,6 +48,11 @@ public class BuildingManager : MonoBehaviour
                     ToolTipeUI.Instance.Show(reason,new ToolTipeUI.ToolTipeTimer{Timer = 2});
                 }
             }
+        }
+
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            Enemy.Create((Vector2)UtilsClass.GetMouseWorledPosition());
         }
     }
 
@@ -98,4 +105,5 @@ public class BuildingManager : MonoBehaviour
         reason = "Building Is So Far";
         return false;
     }
+    public Building GetBuildingHQ()=> hqBuilding;
 }

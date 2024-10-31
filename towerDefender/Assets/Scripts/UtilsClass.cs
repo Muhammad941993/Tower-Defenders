@@ -8,8 +8,10 @@ public static class UtilsClass
     {
         camera = camera ?? Camera.main;
 
-        Vector3 WorlesPosition = camera.ScreenToWorldPoint(Input.mousePosition);
-        WorlesPosition.z = 0;
-        return WorlesPosition;
+        Vector3 worlesPosition = camera.ScreenToWorldPoint(Input.mousePosition);
+        worlesPosition.z = 0;
+        return worlesPosition;
     }
+    
+    
 }

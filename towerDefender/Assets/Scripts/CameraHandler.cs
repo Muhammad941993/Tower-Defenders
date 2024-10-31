@@ -28,7 +28,7 @@ public class CameraHandler : MonoBehaviour
         float y = Input.GetAxisRaw("Vertical");
 
         float moveSpeed = 30;
-        transform.position += new Vector3(x, y, 0).normalized * moveSpeed * Time.deltaTime;
+        transform.position += new Vector3(x, y, 0).normalized * (moveSpeed * Time.deltaTime);
     }
     void ZoomHandler()
     {
