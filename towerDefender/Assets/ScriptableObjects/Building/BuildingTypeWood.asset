@@ -16,6 +16,7 @@ MonoBehaviour:
   prefab: {fileID: 6438534739698597818, guid: 483370de0f3fe274db9e76101dea6da5, type: 3}
   sprite: {fileID: 21300000, guid: 6a842b2a4e5a7d4409bb0aa09da51dc1, type: 3}
   minConstructionRadius: 7
+  hasResourceGeneratorData: 1
   resourceGeneratorData:
     timerMax: 0.5
     resourceDetectionRadius: 7

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Serialization;
@@ -21,6 +22,7 @@ public class BuildingManager : MonoBehaviour
         Instance = this;
         buildingTypeListSO = Resources.Load<BuildingTypeListSO>(typeof(BuildingTypeListSO).Name);
 
+       
     }
    
     // Update is called once per frame
@@ -48,11 +50,6 @@ public class BuildingManager : MonoBehaviour
                     ToolTipeUI.Instance.Show(reason,new ToolTipeUI.ToolTipeTimer{Timer = 2});
                 }
             }
-        }
-
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            Enemy.Create((Vector2)UtilsClass.GetMouseWorledPosition());
         }
     }
 

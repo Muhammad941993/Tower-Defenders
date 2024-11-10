@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class HealthSystem : MonoBehaviour
 {
-    private int _healthAmountMax = 100;
+    [SerializeField]private int _healthAmountMax = 100;
     private int _healthAmount = 0;
 
     public event EventHandler OnDamaged;

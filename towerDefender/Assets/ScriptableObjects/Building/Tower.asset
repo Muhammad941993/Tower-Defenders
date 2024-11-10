@@ -10,19 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 10f11fdb885484646b292419efd3600b, type: 3}
-  m_Name: BuildingTypeStone
+  m_Name: Tower
   m_EditorClassIdentifier: 
-  stringName: stone
-  prefab: {fileID: 6438534739698597818, guid: 304e80fc2f01d4d4da7650e01c08a4fe, type: 3}
-  sprite: {fileID: 21300000, guid: 2263e91ebcd2a254dab5f4caccb4a7af, type: 3}
-  minConstructionRadius: 7
-  hasResourceGeneratorData: 1
+  stringName: Tower
+  prefab: {fileID: 6438534739698597818, guid: f95293a5a9d9e404d84a5c00fe7fb7ba, type: 3}
+  sprite: {fileID: 21300000, guid: 3a549cd61f4d79e4b996c9978dac641f, type: 3}
+  minConstructionRadius: 8
   resourceGeneratorData:
-    timerMax: 1
-    resourceDetectionRadius: 6
-    maxResourceAmount: 3
-    ResourceTypeSO: {fileID: 11400000, guid: fa2139c7f43e6554e8c7b0c3d256607d, type: 2}
+    timerMax: 0
+    resourceDetectionRadius: 0
+    maxResourceAmount: 0
+    ResourceTypeSO: {fileID: 0}
   constructionCostArray:
   - resourcesTypeSO: {fileID: 11400000, guid: be86957942ea15c4296050649c525de5, type: 2}
-    amount: 20
-  healthAmountMax: 100
+    amount: 5
+  - resourcesTypeSO: {fileID: 11400000, guid: fa2139c7f43e6554e8c7b0c3d256607d, type: 2}
+    amount: 5
+  healthAmountMax: 150

@@ -20,7 +20,16 @@ public class BuildingGhost : MonoBehaviour
         if(eventArgs.activeBuldingType != null)
         {
             Show(eventArgs.activeBuldingType.sprite);
-            resourceNerby.Show(eventArgs.activeBuldingType.resourceGeneratorData);
+
+            if (eventArgs.activeBuldingType.hasResourceGeneratorData)
+            {
+                resourceNerby.Show(eventArgs.activeBuldingType.resourceGeneratorData);
+            }
+            else
+            {
+                resourceNerby.Hide();
+            }
+           
         }
         else
         {

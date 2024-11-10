@@ -11,6 +11,7 @@ public class BuildingTypeSO : ScriptableObject
     public GameObject prefab;
     public Sprite sprite;
     public float minConstructionRadius;
+    public bool hasResourceGeneratorData;
     public ResourcesGeneratorData resourceGeneratorData;
     public ResourceAmount[] constructionCostArray;
     public int healthAmountMax;

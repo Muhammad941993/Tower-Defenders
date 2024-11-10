@@ -27,8 +27,6 @@ public class ResourceNerbyOverlay : MonoBehaviour
         transform.Find("icon").GetComponent<SpriteRenderer>().sprite =
             _resourcesGenerator.ResourceTypeSO.Image;
 
-
-
         gameObject.SetActive(true);
     }
     public void Hide()

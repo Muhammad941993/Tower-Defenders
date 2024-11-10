@@ -9,6 +9,8 @@ public class ResourcesManager : MonoBehaviour
     public event EventHandler OnResourcesAmountChanged;
     private ResourcesTypeListSO resourcesTypeListSO;
     Dictionary<ResourcesTypeSO, int> resourceTypeAmount = new();
+    [SerializeField] List<ResourceAmount> startResourceAmounts = new List<ResourceAmount>();
+
     private void Awake()
     {
         Instance = this;
@@ -17,6 +19,10 @@ public class ResourcesManager : MonoBehaviour
         foreach (var item in resourcesTypeListSO.List)
         {
             resourceTypeAmount[item] = 0;
+        }
+        foreach (var VARIABLE in startResourceAmounts)
+        {
+            AddResources(VARIABLE.resourcesTypeSO, VARIABLE.amount);
         }
     }
     

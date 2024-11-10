@@ -9,21 +9,33 @@ public class Enemy : MonoBehaviour
     {
         Transform enemy = Resources.Load<Transform>("Enemy");
         var x = Instantiate(enemy, position, Quaternion.identity);
-        
         return x.GetComponent<Enemy>();
     }
+    
     private Transform _target;
-
     private Rigidbody2D _rigidbody;
+    private HealthSystem _healthSystem;
 
     private float _speed = 5f;
     // Start is called before the first frame update
     void Start()
     {
+        _healthSystem = GetComponent<HealthSystem>();
         _rigidbody = GetComponent<Rigidbody2D>();
         _target = BuildingManager.Instance.GetBuildingHQ().transform;
-        
+        _healthSystem.OnDied += HealthSystemOnOnDied;
         InvokeRepeating(nameof(LookForNearestTarget),1f,.5f);
+    }
+
+    private void OnDestroy()
+    {
+        _healthSystem.OnDied -= HealthSystemOnOnDied;
+
+    }
+
+    private void HealthSystemOnOnDied(object sender, EventArgs e)
+    {
+       Destroy(gameObject);
     }
 
     // Update is called once per frame
