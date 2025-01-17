@@ -15,6 +15,7 @@ public class BuildingTypeSO : ScriptableObject
     public ResourcesGeneratorData resourceGeneratorData;
     public ResourceAmount[] constructionCostArray;
     public int healthAmountMax;
+    [FormerlySerializedAs("constractionTime")] public float constractionTimerMax;
 
     public string GetConstructionCost()
     {

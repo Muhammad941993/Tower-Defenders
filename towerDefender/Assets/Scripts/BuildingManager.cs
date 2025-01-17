@@ -11,6 +11,7 @@ public class BuildingManager : MonoBehaviour
     [SerializeField] Building hqBuilding;
     private BuildingTypeSO activeBuldingType;
     private BuildingTypeListSO buildingTypeListSO;
+    Transform buildingConstraction;
     public event EventHandler<OnActiveBuildingTypeChangedEventArgs> OnActiveBuildingTypeChanged;
 
     public class OnActiveBuildingTypeChangedEventArgs : EventArgs
@@ -21,8 +22,6 @@ public class BuildingManager : MonoBehaviour
     {
         Instance = this;
         buildingTypeListSO = Resources.Load<BuildingTypeListSO>(typeof(BuildingTypeListSO).Name);
-
-       
     }
    
     // Update is called once per frame
@@ -37,7 +36,8 @@ public class BuildingManager : MonoBehaviour
                     if (ResourcesManager.Instance.CanAfford(activeBuldingType.constructionCostArray))
                     {
                         ResourcesManager.Instance.SpendResources(activeBuldingType.constructionCostArray);
-                        Instantiate(activeBuldingType.prefab, UtilsClass.GetMouseWorledPosition(), Quaternion.identity);
+                        // Instantiate(activeBuldingType.prefab, UtilsClass.GetMouseWorledPosition(), Quaternion.identity);
+                        BuildingConstraction.Create(UtilsClass.GetMouseWorledPosition(),activeBuldingType);
                     }
                     else
                     {

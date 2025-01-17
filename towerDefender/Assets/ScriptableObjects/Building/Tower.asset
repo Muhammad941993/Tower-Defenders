@@ -16,6 +16,7 @@ MonoBehaviour:
   prefab: {fileID: 6438534739698597818, guid: f95293a5a9d9e404d84a5c00fe7fb7ba, type: 3}
   sprite: {fileID: 21300000, guid: 3a549cd61f4d79e4b996c9978dac641f, type: 3}
   minConstructionRadius: 8
+  hasResourceGeneratorData: 0
   resourceGeneratorData:
     timerMax: 0
     resourceDetectionRadius: 0
@@ -27,3 +28,4 @@ MonoBehaviour:
   - resourcesTypeSO: {fileID: 11400000, guid: fa2139c7f43e6554e8c7b0c3d256607d, type: 2}
     amount: 5
   healthAmountMax: 150
+  constractionTime: 3
