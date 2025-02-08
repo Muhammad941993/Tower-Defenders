@@ -32,6 +32,5 @@ public class ResourceNerbyOverlay : MonoBehaviour
     public void Hide()
     {
         gameObject.SetActive(false);
-
     }
 }

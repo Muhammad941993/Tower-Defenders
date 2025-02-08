@@ -43,12 +43,12 @@ public class Enemy : MonoBehaviour
     {
         if (_target != null)
         {
-            _rigidbody.velocity = (_target.position - transform.position).normalized * _speed;
+            _rigidbody.linearVelocity = (_target.position - transform.position).normalized * _speed;
 
         }
         else
         {
-            _rigidbody.velocity = Vector2.zero;
+            _rigidbody.linearVelocity = Vector2.zero;
         }
     }
 
