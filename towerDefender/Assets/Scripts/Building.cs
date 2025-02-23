@@ -6,13 +6,15 @@ public class Building : MonoBehaviour
 {
     private HealthSystem _healthSystem;
     BuildingTypeSO _buildingType;
+    Transform _buildingDemolishBtn;
     // Start is called before the first frame update
     void Start()
     {
         _healthSystem = GetComponent<HealthSystem>();
         _buildingType = GetComponent<BuildingTypeHolder>().BuildingTypeSO;
+        _buildingDemolishBtn = transform.Find("pfBuildingDemolish");
         
-        
+        _buildingDemolishBtn?.gameObject.SetActive(false);
         _healthSystem.SetHealthAmountMax(_buildingType.healthAmountMax,true);
        _healthSystem.OnDied += HealthSystemOnOnDied;
     }
@@ -22,11 +24,13 @@ public class Building : MonoBehaviour
        Destroy(gameObject);
     }
 
-    void Update()
+    private void OnMouseEnter()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            _healthSystem.Damage(10);
-        }
+        _buildingDemolishBtn?.gameObject.SetActive(true);
+    }
+
+    private void OnMouseExit()
+    {
+        _buildingDemolishBtn?.gameObject.SetActive(false);
     }
 }
