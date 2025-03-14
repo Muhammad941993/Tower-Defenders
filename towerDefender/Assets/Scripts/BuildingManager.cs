@@ -13,6 +13,7 @@ public class BuildingManager : MonoBehaviour
     private BuildingTypeListSO buildingTypeListSO;
     Transform buildingConstraction;
     public event EventHandler<OnActiveBuildingTypeChangedEventArgs> OnActiveBuildingTypeChanged;
+    public bool IsGameOver { get; private set; } = false;
 
     public class OnActiveBuildingTypeChangedEventArgs : EventArgs
     {
@@ -22,8 +23,15 @@ public class BuildingManager : MonoBehaviour
     {
         Instance = this;
         buildingTypeListSO = Resources.Load<BuildingTypeListSO>(typeof(BuildingTypeListSO).Name);
+        hqBuilding.GetComponent<HealthSystem>().OnDied += HQ_Died;
     }
-   
+
+    private void HQ_Died(object sender, EventArgs e)
+    {
+        GameOverUI.Instance.Show();
+        IsGameOver = true;
+    }
+
     // Update is called once per frame
     void Update()
     {

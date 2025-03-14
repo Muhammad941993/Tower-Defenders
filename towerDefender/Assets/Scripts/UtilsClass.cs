@@ -6,7 +6,7 @@ public static class UtilsClass
 
     public static Vector3 GetMouseWorledPosition()
     {
-        camera = camera ?? Camera.main;
+        if(camera == null) camera = Camera.main;
 
         Vector3 worlesPosition = camera.ScreenToWorldPoint(Input.mousePosition);
         worlesPosition.z = 0;

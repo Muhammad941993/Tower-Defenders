@@ -42,5 +42,6 @@ public class CameraHandler : MonoBehaviour
 
         float zoomSpeed = 5f;
         orthograohicSize = Mathf.Lerp(orthograohicSize, targetOrthograohicSize, Time.deltaTime * zoomSpeed);
+        cinemachine.m_Lens.OrthographicSize = orthograohicSize;
     }
 }

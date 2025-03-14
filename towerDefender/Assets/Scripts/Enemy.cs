@@ -22,7 +22,7 @@ public class Enemy : MonoBehaviour
     {
         _healthSystem = GetComponent<HealthSystem>();
         _rigidbody = GetComponent<Rigidbody2D>();
-        _target = BuildingManager.Instance.GetBuildingHQ().transform;
+        _target = BuildingManager.Instance.GetBuildingHQ()?.transform;
         _healthSystem.OnDied += HealthSystemOnOnDied;
         InvokeRepeating(nameof(LookForNearestTarget),1f,.5f);
     }
@@ -87,7 +87,7 @@ public class Enemy : MonoBehaviour
 
         if (_target is null)
         {
-            _target = BuildingManager.Instance.GetBuildingHQ().transform;
+            _target = BuildingManager.Instance.GetBuildingHQ()?.transform;
         }
     }
 }
