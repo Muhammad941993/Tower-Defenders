@@ -31,6 +31,8 @@ public class BuildingConstraction : MonoBehaviour
         if (constractionTimer <= 0)
         {
             Instantiate(buildingTypeSO.prefab, transform.position, Quaternion.identity);
+            SoundManager.Instance.PlaySound(SoundManager.Sound.BuildingPlaced);
+
             Destroy(gameObject);
         }
     }

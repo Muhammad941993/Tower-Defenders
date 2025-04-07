@@ -24,7 +24,13 @@ public class Enemy : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody2D>();
         _target = BuildingManager.Instance.GetBuildingHQ()?.transform;
         _healthSystem.OnDied += HealthSystemOnOnDied;
+        _healthSystem.OnDamaged += HealthSystemOnOnDamaged;
         InvokeRepeating(nameof(LookForNearestTarget),1f,.5f);
+    }
+
+    private void HealthSystemOnOnDamaged(object sender, EventArgs e)
+    {
+        SoundManager.Instance.PlaySound(SoundManager.Sound.EnemyHit);
     }
 
     private void OnDestroy()
@@ -35,6 +41,8 @@ public class Enemy : MonoBehaviour
 
     private void HealthSystemOnOnDied(object sender, EventArgs e)
     {
+        SoundManager.Instance.PlaySound(SoundManager.Sound.EnemyDie);
+
        Destroy(gameObject);
     }
 
@@ -63,13 +71,13 @@ public class Enemy : MonoBehaviour
 
     void LookForNearestTarget()
     {
-        var nearestTarget = Physics2D.OverlapCircleAll(transform.position, 5);
+        var nearestTarget = Physics2D.OverlapCircleAll(transform.position, 10);
         
         foreach (var VARIABLE in nearestTarget)
         {
             if (VARIABLE.GetComponent<Building>() is not null)
             {
-                if (_target is null)
+                if (_target != null)
                 {
                     _target = VARIABLE.transform;
                 }

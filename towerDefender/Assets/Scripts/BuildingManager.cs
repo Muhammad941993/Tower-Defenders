@@ -30,6 +30,8 @@ public class BuildingManager : MonoBehaviour
     {
         GameOverUI.Instance.Show();
         IsGameOver = true;
+        SoundManager.Instance.PlaySound(SoundManager.Sound.GameOver);
+
     }
 
     // Update is called once per frame
