@@ -13,6 +13,13 @@ public class HealthBar : MonoBehaviour
     {
         _healthBar = transform.Find("bar");
         healthSystem.OnDamaged += HealthSystemOnOnDamaged;
+        healthSystem.OnHealed += HealthSystemOnOnHealed;
+        UpdateHealthBarVisible();
+    }
+
+    private void HealthSystemOnOnHealed(object sender, EventArgs e)
+    {
+        _healthBar.localScale = new Vector3(healthSystem.GetHeathNormalized(), 1, 1);
         UpdateHealthBarVisible();
     }
 

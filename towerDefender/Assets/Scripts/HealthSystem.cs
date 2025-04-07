@@ -7,6 +7,7 @@ public class HealthSystem : MonoBehaviour
     private int _healthAmount = 0;
 
     public event EventHandler OnDamaged;
+    public event EventHandler OnHealed;
     public event EventHandler OnDied;
 
     private void Awake()
@@ -51,5 +52,23 @@ public class HealthSystem : MonoBehaviour
        {
            _healthAmount = _healthAmountMax;
        }
+    }
+
+    public void Heal(int healAmount)
+    {
+        _healthAmount += healAmount;
+        _healthAmount = Mathf.Clamp(_healthAmount, 0, _healthAmountMax);
+        OnHealed?.Invoke(this, EventArgs.Empty);
+    }
+
+    public void HealFull()
+    {
+        _healthAmount = _healthAmountMax;
+        OnHealed?.Invoke(this, EventArgs.Empty);
+    }
+
+    public int GetHealthAmountMax()
+    {
+        return _healthAmountMax;
     }
 }
